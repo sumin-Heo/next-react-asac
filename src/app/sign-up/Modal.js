@@ -1,7 +1,7 @@
 import React from 'react';
 import { useModal } from '../ModalContext';
 
-function Modal() {
+function CustomModal() {
   const { modalState, dispatch } = useModal();
 
   if (!modalState.isOpen) {
@@ -28,4 +28,4 @@ function Modal() {
   );
 }
 
-export default Modal;
+export default CustomModal;

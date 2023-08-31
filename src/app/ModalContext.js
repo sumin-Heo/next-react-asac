@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useReducer } from 'react';
+import { Modal } from '@mui/material';
 
 const ModalContext = createContext();
 
@@ -9,8 +10,12 @@ export function ModalProvider({ children }) {
     isOpen: false,
     title: '',
     content: '',
-    onConfirm: null,
-    onCancel: null,
+    onConfirm: () => {
+      console.log('확인 버튼 클릭');
+    },
+    onCancel: () => {
+      console.log('취소 버튼 클릭');
+    },
   };
 
   function modalReducer(state, action) {
@@ -29,6 +34,17 @@ export function ModalProvider({ children }) {
   return (
     <ModalContext.Provider value={{ modalState, dispatch }}>
       {children}
+      <Modal
+        open={modalState.isOpen}
+        onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
+      >
+        <div className="modal">
+          <h2>{modalState.title}</h2>
+          <p>{modalState.content}</p>
+          <button onClick={modalState.onConfirm}>확인</button>
+          <button onClick={modalState.onCancel}>취소</button>
+        </div>
+      </Modal>
     </ModalContext.Provider>
   );
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import Modal from './Modal';
 import { useModal } from '../ModalContext';
 import '../main.css';
 
@@ -10,7 +9,6 @@ export default function App() {
   const passwordFormRef = useRef<HTMLInputElement | null>(null);
   const rePasswordFormRef = useRef<HTMLInputElement | null>(null);
   const { dispatch } = useModal();
-  const [showModal, setShowModal] = useState(false);
 
   const [inputs, setInputs] = useState({
     userId: '',
@@ -63,11 +61,10 @@ export default function App() {
     dispatch({
       type: 'OPEN_MODAL',
       payload: {
-        title: '제약 안내',
-        content: '패스워드는 8자 이상이어야 합니다.',
+        title: '주의',
+        content: '조건이 올바르지 않습니다.',
       },
     });
-    setShowModal(true);
   };
 
   return (
@@ -75,8 +72,7 @@ export default function App() {
       <form>
         <div>
           <h1>회원가입</h1>
-          {showModal && <Modal />}
-          <label>아이디(메일)</label>
+          <label>Id(e-mail)</label>
           <input
             type="text"
             name="userId"
@@ -86,7 +82,7 @@ export default function App() {
           />
         </div>
         <div>
-          <label>패스워드</label>
+          <label>PW</label>
           <input
             type="password"
             name="userPW"
@@ -96,7 +92,7 @@ export default function App() {
           />
         </div>
         <div>
-          <label>패스워드 확인</label>
+          <label>PW 확인</label>
           <input
             type="password"
             name="re_password"
@@ -106,7 +102,7 @@ export default function App() {
           />
         </div>
         <div>
-          <button onClick={handleSubmit}>완료</button>
+          <button onClick={handleSubmit}>입력</button>
         </div>
       </form>
     </div>
