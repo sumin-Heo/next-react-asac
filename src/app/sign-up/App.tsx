@@ -38,6 +38,7 @@ export default function App() {
 
       if (!userId.includes('@')) {
         userIdRef.current.focus();
+        openModal();
         return;
       }
 
@@ -45,10 +46,12 @@ export default function App() {
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
       if (!passwordRegExp.test(userPW)) {
         passwordFormRef.current.focus();
+        openModal();
         return;
       }
       if (userPW !== re_password) {
         rePasswordFormRef.current.focus();
+        openModal();
         return;
       }
 
@@ -72,7 +75,6 @@ export default function App() {
       <form>
         <div>
           <h1>회원가입</h1>
-          <button onClick={openModal}>모달 열기</button>
           {showModal && <Modal />}
           <label>아이디(메일)</label>
           <input
@@ -104,7 +106,7 @@ export default function App() {
           />
         </div>
         <div>
-          <button onClick={handleSubmit}>회원가입</button> {/* 오타 수정 */}
+          <button onClick={handleSubmit}>완료</button>
         </div>
       </form>
     </div>
