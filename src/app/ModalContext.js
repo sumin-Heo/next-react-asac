@@ -10,12 +10,8 @@ export function ModalProvider({ children }) {
     isOpen: false,
     title: '',
     content: '',
-    onConfirm: () => {
-      console.log('확인 버튼 클릭');
-    },
-    onCancel: () => {
-      console.log('취소 버튼 클릭');
-    },
+    onConfirm: null,
+    onCancel: null,
   };
 
   function modalReducer(state, action) {
@@ -41,8 +37,22 @@ export function ModalProvider({ children }) {
         <div className="modal">
           <h2>{modalState.title}</h2>
           <p>{modalState.content}</p>
-          <button onClick={modalState.onConfirm}>확인</button>
-          <button onClick={modalState.onCancel}>취소</button>
+          <button
+            onClick={() => {
+              if (modalState.onConfirm) modalState.onConfirm();
+              dispatch({ type: 'CLOSE_MODAL' });
+            }}
+          >
+            확인
+          </button>
+          <button
+            onClick={() => {
+              if (modalState.onCancel) modalState.onCancel();
+              dispatch({ type: 'CLOSE_MODAL' });
+            }}
+          >
+            취소
+          </button>
         </div>
       </Modal>
     </ModalContext.Provider>
