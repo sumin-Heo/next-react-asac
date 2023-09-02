@@ -78,6 +78,11 @@ export default function App() {
         id="userId"
         inputRef={userIdRef}
         onChange={onChange}
+        sx={{
+          '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'white',
+          },
+        }}
       />
 
       <TextField
@@ -89,6 +94,11 @@ export default function App() {
         id="userPW"
         inputRef={passwordFormRef}
         onChange={onChange}
+        sx={{
+          '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'white',
+          },
+        }}
       />
 
       <TextField
@@ -100,6 +110,11 @@ export default function App() {
         id="re_password"
         inputRef={rePasswordFormRef}
         onChange={onChange}
+        sx={{
+          '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'white',
+          },
+        }}
       />
 
       <Button type="submit" onClick={handleSubmit}>

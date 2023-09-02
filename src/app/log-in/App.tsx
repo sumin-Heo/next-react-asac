@@ -48,6 +48,11 @@ export default function Login() {
         label="id"
         variant="outlined"
         {...register('id', { required: true, minLength: 1 })}
+        sx={{
+          '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'white',
+          },
+        }}
       />
       {errors.id?.type === 'required' && <p role="alert">Id is required</p>}
 
@@ -60,6 +65,11 @@ export default function Login() {
           required: true,
           pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-]).{8,}$/,
         })}
+        sx={{
+          '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'white',
+          },
+        }}
       />
       {errors.pw?.type === 'required' && (
         <p role="alert">PASSWORD is required</p>
