@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import { Box, TextField, Button } from '@mui/material';
 import { useModal } from '../ModalContext';
-import '../main.css';
 
 export default function App() {
   const userIdRef = useRef<HTMLInputElement | null>(null);
@@ -68,43 +68,43 @@ export default function App() {
   };
 
   return (
-    <div>
-      <form>
-        <div>
-          <h1>회원가입</h1>
-          <label>Id(e-mail)</label>
-          <input
-            type="text"
-            name="userId"
-            id="userId"
-            ref={userIdRef}
-            onChange={onChange}
-          />
-        </div>
-        <div>
-          <label>PW</label>
-          <input
-            type="password"
-            name="userPW"
-            id="userPW"
-            ref={passwordFormRef}
-            onChange={onChange}
-          />
-        </div>
-        <div>
-          <label>PW 확인</label>
-          <input
-            type="password"
-            name="re_password"
-            id="re_password"
-            ref={rePasswordFormRef}
-            onChange={onChange}
-          />
-        </div>
-        <div>
-          <button onClick={handleSubmit}>입력</button>
-        </div>
-      </form>
-    </div>
+    <Box component="form">
+      <h1>회원가입</h1>
+      <TextField
+        fullWidth
+        label="Id(e-mail)"
+        variant="outlined"
+        name="userId"
+        id="userId"
+        inputRef={userIdRef}
+        onChange={onChange}
+      />
+
+      <TextField
+        fullWidth
+        label="PW"
+        variant="outlined"
+        type="password"
+        name="userPW"
+        id="userPW"
+        inputRef={passwordFormRef}
+        onChange={onChange}
+      />
+
+      <TextField
+        fullWidth
+        label="PW 확인"
+        variant="outlined"
+        type="password"
+        name="re_password"
+        id="re_password"
+        inputRef={rePasswordFormRef}
+        onChange={onChange}
+      />
+
+      <Button type="submit" onClick={handleSubmit}>
+        입력
+      </Button>
+    </Box>
   );
 }
